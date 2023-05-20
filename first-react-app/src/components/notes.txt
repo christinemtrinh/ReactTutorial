@@ -1,0 +1,11 @@
+A component is just a JS function.
+Ideally have one file per component. This means a full React project could have dozens of components.
+
+App.js tends to be the root component which is rendered in index.js. This means that other components are either nested under App.js or other components.
+Can be visualized as a component tree. 
+        App
+        / \ 
+    Header Body
+          / | \
+          T T T
+
