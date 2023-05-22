@@ -1,6 +1,9 @@
-import './ExpenseItem.css';
+import ExpenseDate from "./ExpenseDate";
+import Card from "../UI/Card";
 
-function ExpenseItem(props) {
+import "./ExpenseItem.css";
+
+const ExpenseItem = (props) => {
   // ISSUE 1: Can only return a single element.. trying to return the following gives an error
   /*
     <div>Date</div>
@@ -21,18 +24,21 @@ function ExpenseItem(props) {
   */
 
   //-----------------------------------------------------------------------------//
-  
+
   // ISSUE 3: We want to pass in data from a parent component.. We will use parameters to get this. Rename the function to accept an arg.
   // function ExpenseItem() --> ExpenseItem(props)
   // Now can access them using the names specified in calling line: props.title, props.date, props.amount
+
+  //-----------------------------------------------------------------------------//
+
   return (
-    <div className="expense-item">  
-      <div>{props.date.toISOString()}</div>
+    <Card className="expense-item">
+      <ExpenseDate date={props.date}/>
       <div className="expense-item__description">
         <h2>{props.title}</h2>
         <div className="expense-item__price">${props.amount}</div>
       </div>
-    </div>
+    </Card>
   );
 }
 
