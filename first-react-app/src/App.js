@@ -4,7 +4,8 @@
 // We import our custom component and use it like an HTML element
 // It must be capitalized so that HTML knows the element is custom type
 // import ExpenseItem from "./components/ExpenseItem"; No longer needed after adding 'Expense.js' component
-import Expenses from './components/Expenses/Expenses'
+import Expenses from './components/Expenses/Expenses';
+import NewExpense from './components/NewExpense/NewExpense'; 
 function App() {
   const expenses = [
     {
@@ -31,6 +32,7 @@ function App() {
   return (
     <div>
       <h2>Let's get started!</h2>
+      <NewExpense/>
     <Expenses expenseList={expenses} />
     </div>
   );
