@@ -9,3 +9,4 @@ Can be visualized as a component tree.
           / | \
           T T T
 
+Presentational, or dumb, components do not manage state. These are less common than stateful components.

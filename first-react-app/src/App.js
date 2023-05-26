@@ -29,10 +29,16 @@ function App() {
     },
   ];
 
+  // We have brought the data from ExpenseForm up to here, we need to lift the state up 
+  // to the lowest component of the tree that has both data generator and data user
+  const saveNewExpenseHandler = (expenseData) => {
+    expenses.append(expenseData);
+  };
+
   return (
     <div>
       <h2>Let's get started!</h2>
-      <NewExpense/>
+      <NewExpense onSaveNewExpense={saveNewExpenseHandler}/>
     <Expenses expenseList={expenses} />
     </div>
   );
