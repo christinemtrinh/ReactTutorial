@@ -1,13 +1,15 @@
 // Notice this JS code is returning HTML code, this is called JSX syntax
 // We can see the transformed code under Browser > Dev Tools (Fn + F12) > Sources > static/js
 
+import React, { useState } from "react";
+
 // We import our custom component and use it like an HTML element
 // It must be capitalized so that HTML knows the element is custom type
 // import ExpenseItem from "./components/ExpenseItem"; No longer needed after adding 'Expense.js' component
-import Expenses from './components/Expenses/Expenses';
-import NewExpense from './components/NewExpense/NewExpense'; 
+import Expenses from "./components/Expenses/Expenses";
+import NewExpense from "./components/NewExpense/NewExpense";
 function App() {
-  const expenses = [
+  const [expenses, setExpenses] = useState([
     {
       id: "e1",
       title: "Toilet Paper",
@@ -27,19 +29,28 @@ function App() {
       amount: 450,
       date: new Date(2021, 5, 12),
     },
-  ];
+  ]);
 
-  // We have brought the data from ExpenseForm up to here, we need to lift the state up 
+  // We have brought the data from ExpenseForm up to here, we need to lift the state up
   // to the lowest component of the tree that has both data generator and data user
+  // We are updating our state via previous snapshot, so we should use the previous state 'prevExpenses'
+  // accessible inside the set function 'setExpenses' parameter via arrow function
   const saveNewExpenseHandler = (expenseData) => {
-    expenses.append(expenseData);
+    setExpenses((prevExpenses) => {
+      return [expenseData, ...prevExpenses];
+    });
   };
+
+  // Adding new items to the array gets tricky
+  // Default behavior is to recopy the entire array since everything is the same.. rerendering is triggered by change in length of list
+  // Besides performance concerns, we might lose some individual state data of the array item
+  // key props (see Expenses.js) are used to tell React where the new item has been entered
 
   return (
     <div>
       <h2>Let's get started!</h2>
-      <NewExpense onSaveNewExpense={saveNewExpenseHandler}/>
-    <Expenses expenseList={expenses} />
+      <NewExpense onSaveNewExpense={saveNewExpenseHandler} />
+      <Expenses expenseList={expenses} />
     </div>
   );
 }
