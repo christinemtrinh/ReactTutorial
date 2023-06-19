@@ -1,13 +1,7 @@
-// Notice this JS code is returning HTML code, this is called JSX syntax
-// We can see the transformed code under Browser > Dev Tools (Fn + F12) > Sources > static/js
-
 import React, { useState } from "react";
-
-// We import our custom component and use it like an HTML element
-// It must be capitalized so that HTML knows the element is custom type
-// import ExpenseItem from "./components/ExpenseItem"; No longer needed after adding 'Expense.js' component
 import Expenses from "./components/Expenses/Expenses";
 import NewExpense from "./components/NewExpense/NewExpense";
+
 function App() {
   const [expenses, setExpenses] = useState([
     {
