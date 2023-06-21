@@ -2,8 +2,7 @@
 import "./ExpenseDate.css";
 
 const ExpenseDate = (props) => {
-// ISSUE 4: Refactor the date element to have it look like a calender
-  // It is better practice to extract variables into helpers and have complex logic outside of HTML
+  // It is better practice to extract variables into helpers and have complex logic outside of HTML of return statement
   const month = props.date.toLocaleString("en-US", { month: "long" });
   const day = props.date.toLocaleString("en-US", { day: "2-digit" });
   const year = props.date.getFullYear();
