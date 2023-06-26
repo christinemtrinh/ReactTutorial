@@ -30,7 +30,7 @@ function App() {
       return [expenseData, ...prevExpenses];
     });
   };
-
+  
   return (
     <div>
       <h2>Let's get started!</h2>
